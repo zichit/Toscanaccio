@@ -1,0 +1,332 @@
+/* --- style.css --- */
+
+:root {
+  --black: #0c0805; 
+  --dark-grey: #17110c;
+  --gold: #c9973a;
+  --light-gold: #e2b96a;
+  --white: #ffffff;
+  --cream: #f4ebd8;
+  --text-muted: #a39b93;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: radial-gradient(circle at 50% 50%, #1a120c 0%, #050302 100%);
+  background-attachment: fixed;
+  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* --- ANIMAZIONE BRACE (SCINTILLE) --- */
+.ember-container {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.ember {
+    backdrop-filter: blur(1px);
+  position: absolute; bottom: -20px; border-radius: 50%;
+  background: rgba(255, 100, 0, 0.8);
+  box-shadow: 0 0 10px 2px rgba(255, 69, 0, 0.6), 0 0 20px 2px rgba(255, 140, 0, 0.4);
+  opacity: 0; animation: flyUp linear infinite;
+}
+@keyframes flyUp {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(calc(-30px + 60px * var(--dir))) scale(0); opacity: 0; }
+}
+
+/* --- ANIMAZIONI INGRESSO --- */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: all 0.9s cubic-bezier(0.5, 0, 0, 1); position: relative; z-index: 2;
+}
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+@keyframes bounceIt {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+.bouncing-ball { 
+  animation: bounceIt 2s infinite; display: inline-flex; justify-content: center; align-items: center;
+  width: 50px; height: 50px; border-radius: 50%;
+  border: 1px solid var(--gold); color: var(--gold); text-decoration: none;
+  font-size: 1.2rem; transition: background 0.3s;
+}
+.bouncing-ball:hover { background: var(--gold); color: var(--black); }
+
+/* --- NAVBAR E LOGO --- */
+/* --- NAVBAR E LOGO --- */
+/* --- NAVBAR E LOGO --- */
+header {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.5rem 5%;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.4s ease;
+  /* Quasi invisibile all'inizio */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+}
+
+header.scrolled {
+  /* Opacità molto bassa (0.2), praticamente trasparente */
+  background: rgba(20, 15, 10, 0.2); 
+  padding: 0.7rem 5%;
+  border-bottom: 1px solid rgba(201, 151, 58, 0.1);
+  /* Questo è quello che permette di leggere il menu anche se è trasparente */
+  backdrop-filter: blur(15px); 
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; z-index: 1002; position: relative;}
+.logo-img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); box-shadow: 0 0 10px rgba(201,151,58,0.3); }
+.logo-text { font-family: 'Great Vibes', cursive; font-size: 2.4rem; font-weight: 400; color: var(--gold); letter-spacing: 2px; text-transform: none; text-shadow: 0 2px 4px rgba(0,0,0,0.8); margin-top: 5px; }
+
+/* Menu Desktop */
+.menudesktop { 
+  list-style: none; 
+  display: flex; 
+  gap: 2.5rem; 
+  align-items: center; 
+}
+
+.menudesktop a { 
+  color: var(--gold); 
+  text-decoration: none; 
+  font-size: 0.75rem; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  transition: all 0.3s ease; 
+  /* Ombra per rendere il testo leggibile sulle foto */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
+}
+
+.menudesktop a:hover { 
+  color: var(--white); /* Cambia in bianco al passaggio per feedback visivo */
+  text-shadow: 0 0 10px rgba(201, 151, 58, 0.6);
+}
+
+/* Menu Mobile */
+.hamburger { display: none; cursor: pointer; z-index: 1002; position: relative; }
+.x { height: 40px; width: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+.x .lines .line { 
+  width: 25px; 
+  height: 2px; 
+  background-color: var(--gold); 
+  margin: 5px 0; 
+  transition: all .3s ease-out; 
+  transform-origin: center; 
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.translateline:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.translateline:nth-child(2) { opacity: 0; }
+.translateline:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.menuhamburger {
+  position: fixed; top: 0; right: -105%; height: 100vh; width: 100%;
+  background-color: rgba(12, 8, 5, 0.98); backdrop-filter: blur(15px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+  list-style: none; transition: all 0.6s cubic-bezier(.81,.01,.26,1); z-index: 1001; margin: 0; padding: 0;
+}
+
+.menuhamburger.open { right: 0; }
+
+.menuhamburger a { 
+  color: var(--gold); /* Uniformato all'oro del logo */
+  font-size: 1.5rem; 
+  font-family: 'Cormorant Garamond', serif; 
+  text-decoration: none; 
+  text-transform: uppercase; 
+  letter-spacing: 3px; 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+  transition: color 0.3s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.menuhamburger a:hover { 
+  color: var(--white); 
+}
+
+/* Pulsanti */
+.btn {
+  display: inline-block; padding: 1rem 2.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+  text-decoration: none; transition: all 0.3s ease; cursor: pointer; text-align: center; font-family: 'Montserrat', sans-serif;
+}
+.btn-outline { color: var(--gold); border: 1px solid var(--gold); background: transparent; }
+.btn-outline:hover { background: var(--gold); color: var(--black); box-shadow: 0 0 15px rgba(201,151,58,0.3); }
+.btn-solid { 
+  background: var(--gold); 
+  /* Modifica il colore del testo qui sotto per la leggibilità */
+  color: #ffffff !important; 
+  border: 1px solid var(--gold);
+  font-weight: 600; /* Rende il testo un po' più spesso */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Aggiunge un'ombra leggera alle lettere */
+}
+
+.btn-solid:hover { 
+  background: var(--light-gold); 
+  border-color: var(--light-gold); 
+  color: var(--black) !important; /* Al passaggio del mouse il testo diventa nero sullo sfondo oro chiaro */
+  transform: translateY(-3px); 
+  box-shadow: 0 10px 20px rgba(201,151,58,0.2); 
+}
+.button-width { width: 280px; max-width: 100%; }
+
+/* --- HERO SECTION --- */
+.hero {
+  position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('img/copertina.jpeg'); 
+  background-size: cover; background-position: center; background-attachment: fixed; opacity: 0.45; z-index: -1;
+}
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 200px; background: linear-gradient(to top, rgba(12,8,5,1), transparent); z-index: 0; }
+.hero-content { z-index: 2; padding: 0 20px; max-width: 900px; }
+.hero-subtitle { font-size: 0.8rem; letter-spacing: 6px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: block; }
+.hero-title { 
+  font-family: 'Great Vibes', cursive; /* Il font elegante del logo */
+  font-size: clamp(3rem, 10vw, 4.5rem); /* Più piccolo sui cellulari, grande sui PC */
+  line-height: 0.9; 
+  margin-bottom: 1rem; 
+  color: var(--text-muted); /* Colore cenere elegantissimo */
+  font-weight: 400; /* Peso standard per questo corsivo */
+  text-shadow: 0 10px 30px rgba(0,0,0,0.9); 
+}
+.hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; }
+
+/* --- COMMON SECTIONS --- */
+section { padding: 8rem 5%; position: relative; z-index: 2; }
+.section-title{font-family: 'Great Vibes', cursive;font-size: 2.4rem;font-weight: 400;color: var(--gold);letter-spacing: 2px;text-transform: none;text-shadow: 0 2px 4px rgba(0,0,0,0.8);margin-top: 5px;}
+.section-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 0.5rem; display: block; }
+.text-center { text-align: center; }
+.max-width-800 { max-width: 800px; margin: 0 auto; }
+.divider { width: 1px; height: 80px; background: var(--gold); margin: 0 auto 3rem; opacity: 0.5; }
+
+/* --- ABOUT & SPLIT --- */
+.split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+.split-image-wrap { position: relative; }
+.split-image-wrap::before { content: ''; position: absolute; inset: -15px; border: 1px solid rgba(201,151,58,0.3); z-index: 0; }
+.split-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; z-index: 1; filter: brightness(0.9); }
+
+/* --- BANNER CITAZIONE PARALLAX --- */
+/* --- BANNER CITAZIONE PARALLAX AGGIORNATO --- */
+.banner-parallax {
+  position: relative;
+  /* Sostituisco lo sfondo precedente con la tua nuova immagine */
+  background: url('img/backgrounduff.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  padding: 10rem 5%;
+  margin: 4rem 0;
+  overflow: hidden;
+}
+
+.banner-parallax::before {
+  content: ''; 
+  position: absolute; 
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  /* Manteniamo l'overlay scuro per proteggere la leggibilità del testo */
+  background: rgba(5, 3, 2, 0.6); 
+  z-index: 0;
+}
+.glass-banner {
+  background: rgba(26, 18, 12, 0.3); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 151, 58, 0.3); padding: 5rem 2rem; text-align: center; 
+  margin: 0 auto; border-radius: 2px; max-width: 900px; position: relative;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8); z-index: 1;
+}
+.glass-banner::before {
+  content: '“'; position: absolute; top: 0.5rem; left: 50%; transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif; font-size: 8rem; color: rgba(201,151,58,0.2); line-height: 1;
+}
+
+/* --- GALLERY / CARNI --- */
+.bg-darker { background-color: rgba(12, 8, 5, 0.8); } 
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 4rem auto 0; }
+.gallery-item { position: relative; overflow: hidden; aspect-ratio: 4/5; cursor: pointer; border-radius: 3px; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease, filter 0.8s ease; filter: brightness(0.75) grayscale(0.1); }
+.gallery-item:hover img { transform: scale(1.05); filter: brightness(1.1) grayscale(0); }
+.gallery-caption {
+  position: absolute; bottom: 0; left: 0; width: 100%; padding: 2rem 1.5rem;
+  background: linear-gradient(to top, rgba(5,3,2,0.9), transparent);
+  color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
+  transform: translateY(20px); opacity: 0; transition: all 0.4s ease;
+}
+.gallery-item:hover .gallery-caption { transform: translateY(0); opacity: 1; }
+
+/* --- REVIEWS SECTION PARALLAX --- */
+.reviews-parallax {
+  position: relative;
+  background: url('img/bracesfondo.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  padding: 8rem 5%;
+}
+.reviews-parallax::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(12, 8, 5, 0.85); z-index: 0;
+}
+.reviews-content { position: relative; z-index: 1; }
+
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 4rem auto 0; }
+.review-card {
+  background: rgba(255,255,255,0.03); padding: 3rem 2.5rem; 
+  border: 1px solid rgba(201,151,58,0.15); text-align: center;
+  transition: transform 0.4s, background 0.4s; backdrop-filter: blur(5px);
+}
+.review-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.06); border-color: rgba(201,151,58,0.4); }
+.stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; letter-spacing: 2px; }
+.review-text { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--cream); margin-bottom: 1.5rem; font-size: 1.2rem; line-height: 1.6; }
+.review-author { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+
+/* --- FOOTER --- */
+footer { background: #050302; padding: 6rem 5% 2rem; border-top: 1px solid rgba(201,151,58,0.15); position: relative; z-index: 2;}
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; max-width: 1200px; margin: 0 auto 4rem; }
+.footer-col h4 { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 300;}
+.footer-col p, .footer-col a { color: var(--text-muted); font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; display: block; line-height: 1.8;}
+.footer-col a:hover { color: var(--light-gold); }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; color: rgba(153,153,153,0.5); letter-spacing: 1px; }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+  /* --- FIX LOGO MOBILE --- */
+  .logo-text { 
+    font-size: 1.4rem !important; 
+    white-space: nowrap; 
+  }
+  .logo-img { 
+    width: 45px !important; 
+    height: 45px !important; 
+  }
+  .logo-container { 
+    gap: 8px !important; 
+  }
+
+  /* --- MOSAICO CARNI 2X2 --- */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Forza le 2 colonne */
+    gap: 10px !important; /* Riduce lo spazio tra le foto per farle stare bene */
+  }
+
+  .gallery-caption {
+    font-size: 1.1rem !important; /* Rimpicciolisce i titoli delle foto per il mosaico */
+    padding: 1rem !important;
+  }
+
+  /* --- RESTO DEL CODICE --- */
+  .menudesktop { display: none; } 
+  .btn-desktop { display: none; } 
+  .hamburger { display: block; } 
+  .split-section { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-title { font-size: 2.8rem; }
+  section { padding: 5rem 5%; }
+  .glass-banner { padding: 4rem 1.5rem; }
+  
+  .hero-bg, .banner-parallax, .reviews-parallax { background-attachment: scroll; } 
+}

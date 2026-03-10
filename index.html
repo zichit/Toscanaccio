@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Toscanaccio 2.0 — Braceria del Salento</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+
+  <div id="ember-container" class="ember-container"></div>
+
+  <header id="navbar">
+    <a href="#" class="logo-container">
+      <img src="img/tosc.jpg" alt="Logo Il Toscanaccio" class="logo-img">
+      <span class="logo-text">Il Toscanaccio 2.0</span>
+    </a>
+    
+    <ul class="nav-links menudesktop">
+      <li><a href="#about">Chi Siamo</a></li>
+      <li><a href="#carne">La Carne</a></li>
+      <li><a href="#esperienza">L'Esperienza</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    
+    <a href="tel:+393895338759" class="btn btn-outline btn-desktop">Prenota Ora</a>
+
+    <div class="hamburger" onclick="myMenuHamburgerFunction()">
+      <div class="x">
+        <div class="lines">
+          <div class="line" id="line1"></div>
+          <div class="line" id="line2"></div>
+          <div class="line" id="line3"></div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="menuhamburger" id="menuhamburger">
+      <li><a href="#about" onclick="myMenuHamburgerFunction()">Chi Siamo</a></li>
+      <li><a href="#carne" onclick="myMenuHamburgerFunction()">La Carne</a></li>
+      <li><a href="#esperienza" onclick="myMenuHamburgerFunction()">L'Esperienza</a></li>
+      <li><a href="#contatti" onclick="myMenuHamburgerFunction()">Contatti</a></li>
+      <li style="margin-top: 2rem;">
+        <a href="tel:+393895338759" class="btn btn-solid" style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem;">Prenota Ora</a>
+      </li>
+    </ul>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content reveal">
+      <span class="hero-subtitle">Leverano · Salento</span>
+      <h1 class="hero-title">L'Arte della Brace<br>a Tavola</h1>
+      <p class="max-width-800" style="margin-bottom: 2rem; color: rgba(244, 235, 216, 0.8); font-size: 1.1rem;">
+        Dove la maestria della frollatura e la passione per la carne danno vita a un'esperienza culinaria unica nel Salento.
+      </p>
+      <div class="hero-buttons">
+        <a href="tel:+393895338759" class="btn btn-solid button-width">Riserva un Tavolo</a>
+        <a href="#carne" class="btn btn-outline button-width">Le Nostre Carni</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="reveal">
+    <div class="text-center max-width-800">
+      <div class="divider"></div>
+      <span class="section-subtitle">benvenuti da</span>
+      <h2 class="section-title">Il Toscanaccio 2.0</h2>
+      
+      <p style="color: var(--gold); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1rem;">
+        🏆 Orgogliosamente tra le Top 50 Steak House
+      </p>
+
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--cream); margin-bottom: 1.5rem; line-height: 1.4;">
+        “La prima braceria con brace a tavola nel cuore del Salento.”
+      </p>
+      
+      <p style="color: var(--text-muted);">
+        Situato in Piazza Roma a Leverano, offriamo un’esperienza sensoriale intensa. 
+        Recentemente riconosciuti tra le <strong>migliori 50 Steak House</strong>, ogni taglio che selezioniamo è il risultato di un’attenta scelta e di un impegno costante verso l’eccellenza. 
+        La nostra dedizione a garantire solo il meglio si riflette in ogni pezzo di carne, frollato con cura artigianale.
+      </p>
+    </div>
+  </section>
+
+  <section id="carne" class="bg-darker reveal">
+    <div class="text-center">
+      <span class="section-subtitle">eccellenza e selezione</span>
+      <h2 class="section-title">Le Nostre Specialità</h2>
+    </div>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="img/IMG_4435.jpg" alt="Wagyu Australiano">
+        <div class="gallery-caption">Wagyu Australiano</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/IMG_4437.jpg" alt="Carne Dry Aged">
+        <div class="gallery-caption">Selezione Dry Aged</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/IMG_4438.jpg" alt="Tagli Pregiati">
+        <div class="gallery-caption">Tagli Pregiati</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/Costata-Rubia-Gallega-4.jpg" alt="Costata Rubia Gallega">
+        <div class="gallery-caption">Costata Rubia Gallega</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="esperienza" class="reveal">
+    <div class="split-section">
+      <div>
+        <span class="section-subtitle">Il Concept</span>
+        <h2 class="section-title">Brace a Tavola</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">
+          Non serviamo solo carne, offriamo un rituale. La brace arriva direttamente al tuo tavolo, permettendoti di gestire la cottura del tuo taglio pregiato esattamente come preferisci, esaltando i sapori unici della frollatura in un'atmosfera calda, elegante e conviviale.
+        </p>
+        <a href="tel:+393895338759" class="btn btn-outline">Vivi L'Esperienza</a>
+      </div>
+      <div class="split-image-wrap">
+        <img src="img/brace.jpg" alt="Esperienza Toscanaccio" class="split-image">
+      </div>
+    </div>
+  </section>
+
+  <section class="banner-parallax reveal">
+    <div class="glass-banner">
+      <h2 class="section-title" style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 1rem; color: var(--white);">La carne è il nostro forte,<br>la brace è la nostra arte.</h2>
+      <p style="color: var(--light-gold); letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; margin-top: 2rem;">— Dal 2020 nel cuore del Salento</p>
+    </div>
+  </section>
+
+  <section class="reviews-parallax reveal">
+    <div class="reviews-content">
+      <div class="text-center">
+        <span class="section-subtitle">parole dal cuore</span>
+        <h2 class="section-title">La Vostra Opinione</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Esperienza incredibile! La brace a tavola è unica nel suo genere. Carni di qualità eccezionale, la Fiorentina a dir poco eccezionale."</p>
+          <div class="review-author">— Laura D.</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Ottimo ristorante, ampia scelta di carni nazionali ed internazionali. La sorpresa più bella è stata il banco carni."</p>
+          <div class="review-author">— Grazia S.</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Quando vorremo mangiare dell'ottima carne il Toscanaccio è il locale ideale... servizio impeccabile e gentile!"</p>
+          <div class="review-author">— Danilo M.</div>
+        </div>
+      </div>
+      
+      <div class="text-center" style="margin-top: 4rem;">
+         <a class="bouncing-ball" href="#top">↑</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contatti">
+    <div class="footer-grid reveal">
+      <div class="footer-col">
+        <div class="logo-container" style="margin-bottom: 1.5rem;">
+          <img src="img/tosc.jpg" alt="Logo Il Toscanaccio" class="logo-img" style="width: 45px; height: 45px;">
+<span class="logo-text" style="font-size: 1.7rem; white-space: nowrap;">Il Toscanaccio 2.0</span>        </div>
+        <p>La migliore Braceria del Salento.<br>Un viaggio sensoriale tra sapori intensi, frollature estreme ed eleganza.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Dove Siamo</h4>
+        <p>📍 Piazza Roma</p>
+        <p>73045 Leverano (LE)</p>
+        <p>Salento, Italia</p>
+      </div>
+      
+    <div class="footer-col">
+        <h4>Orari</h4>
+        <p>Lunedì: 17:00 – 00:00</p>
+        <p>Martedì: 17:00 – 00:00</p>
+        <p>Mercoledì: 17:00 – 00:00</p>
+        <p>Giovedì: 17:00 – 00:00</p>
+        <p>Venerdì: 17:00 – 00:00</p>
+        <p>Sabato: 17:00 – 00:00</p>
+        <p style="color: var(--gold); font-weight: 500;">Domenica: CHIUSO</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Seguici</h4>
+        <a href="https://instagram.com/il_toscanaccio_leverano" target="_blank">Instagram @il_toscanaccio_leverano</a>
+        
+        <a href="https://www.facebook.com/iltoscanaccio2.0" target="_blank">Facebook Il&nbsp;Toscanaccio</a>
+        
+        <br>
+        <a href="tel:+393895338759" class="btn btn-solid" style="padding: 0.6rem 1.5rem; text-align: center; width: 100%;">Chiama Ora</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Il Toscanaccio 2.0 · Creato con cura e passione</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- GENERATORE DI SCINTILLE (BRACE) ---
+    function createEmbers() {
+      const container = document.getElementById('ember-container');
+      const emberCount = 35; 
+
+      for (let i = 0; i < emberCount; i++) {
+        let ember = document.createElement('div');
+        ember.classList.add('ember');
+
+        let size = Math.random() * 4 + 2; 
+        let left = Math.random() * 100; 
+        let duration = Math.random() * 5 + 4; 
+        let delay = Math.random() * 5; 
+        let dir = Math.random(); 
+
+        ember.style.width = `${size}px`;
+        ember.style.height = `${size}px`;
+        ember.style.left = `${left}%`;
+        ember.style.animationDuration = `${duration}s`;
+        ember.style.animationDelay = `${delay}s`;
+        ember.style.setProperty('--dir', dir);
+
+        container.appendChild(ember);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', createEmbers);
+
+    // --- EFFETTO SFONDO NAVBAR ---
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // --- EFFETTO ANIMAZIONI INGRESSO ---
+    function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        }
+      }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal(); 
+
+    // --- MENU HAMBURGER LOGIC ---
+    function myMenuHamburgerFunction() {
+      document.getElementById("menuhamburger").classList.toggle("open");
+      document.getElementById("line1").classList.toggle("translateline");
+      document.getElementById("line2").classList.toggle("translateline");
+      document.getElementById("line3").classList.toggle("translateline");
+    }
+  </script>
+
+</body>
+</html>
